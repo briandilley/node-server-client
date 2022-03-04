@@ -21,7 +21,7 @@ function handleLine(from: Socket, line: string) {
 
     let sep = line.indexOf(':')
     let cmd = ((sep != -1) ? line.substring(0, sep) : line).replace('\r', '')
-    let arg = ((sep != -1) ? line.substring(sep) : "").replace('\r', '')
+    let arg = ((sep != -1) ? line.substring(sep + 1) : "").replace('\r', '')
 
     switch (cmd) {
 
@@ -32,7 +32,7 @@ function handleLine(from: Socket, line: string) {
             for (var i=0; i<clients.length; i++) {
                 let client = clients[i]
                 if (client.socket != from) {
-                    client.socket.write(`${fromClient.username}: ${arg}\n`)
+                    client.socket.write(`<${fromClient.username}>: ${arg}\n`)
                 }
             }
             break
