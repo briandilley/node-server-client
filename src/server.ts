@@ -72,7 +72,7 @@ function handleNewConnection(socket: Socket) {
 
     // when client closes connection, remove it from the client list
     socket.on('close', () => {
-        clients = clients.filter((c) => c.socket != c.socket)
+        clients = clients.filter((c) => c.socket != socket)
         console.log(`Dropped connection from ${socket.remoteAddress}, ${clients.length} clients connected`)
     })
 
