@@ -61,8 +61,6 @@ function handleLine(from: Socket, line: string) {
             console.log(`Unknown line: ${line}`)
         }
     }
-
-
 }
 
 /**
